@@ -15,6 +15,7 @@ parsed_settings = YAML.safe_load(settings, [], [], true)
 Mongoid::Config.load_configuration(parsed_settings)
 
 data = File.read("example.jpg")
+data.force_encoding('ASCII-8BIT') # Removing this doesn't change the result
 my_model = MyModel.new
 my_model.data = data
 my_model.save
